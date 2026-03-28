@@ -22,6 +22,14 @@ app.get("/todos", getAllTodos)
 app.put("/todos", updateTodo)
 app.delete("/todos", deleteTodo)
 
+//test code route
+app.get("/test",(req,res) =>{
+  res.send("Test route is working")
+  res.json({
+    message:"Hello World"
+  })
+})
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
