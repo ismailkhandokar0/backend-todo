@@ -15,7 +15,7 @@ export const createTodo = async (req: Request, res: Response, next: NextFunction
 
         //create todo
         const todo = await prisma.todo.create({
-            data: parsedBody.data
+            data: parsedBody.data as any
         })
         console.log("Todo created successfully", todo)
         res.status(201).json({
