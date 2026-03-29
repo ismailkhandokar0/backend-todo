@@ -18,19 +18,11 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - name: Backup .env
-      run: |
-        if [ -f .env ]; then 
-          cp .env /tmp/env_backup 
-        fi
     - uses: actions/checkout@v4
-
-    - name: Restore .env
+    - name: Setup .env
       run: |
-        if [ -f /tmp/env_backup ]; then 
-          cp /tmp/env_backup .env
-        fi
-        
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > .env
+          
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
